@@ -5,6 +5,7 @@ import cn.johnyu.product.mapper.ProductDao;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +17,13 @@ import java.lang.management.RuntimeMXBean;
 public class ProductController {
     @Autowired private ProductDao productDao;
 
+    @Transactional
     @PostMapping(value = "/reduceStock")
     public int reduceStock(int pid,int stock){
+        ProductDto product = productDao.loadProduct(pid);
+        if(product.getStock()<stock){
+            throw new RuntimeException("库存不足");
+        }
         return productDao.reduceStock(pid,stock);
     }
 

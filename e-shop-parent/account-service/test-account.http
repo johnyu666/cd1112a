@@ -1,5 +1,5 @@
 ### 查询一个帐户
-GET http://localhost:3600/accounts/1
+GET http://localhost:3600/accounts/2
 Accept: application/json
 
 ### 修改帐户余额

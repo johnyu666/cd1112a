@@ -8,9 +8,12 @@ import cn.johnyu.order.po.OrderPo;
 import cn.johnyu.order.service.OrderService;
 import cn.johnyu.order.service.feign.AccountService;
 import cn.johnyu.order.service.feign.ProductService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -30,5 +33,21 @@ public class OrderServiceImpl implements OrderService {
                 .setProduct(productDto)
                 .setAccount(accountDto);
         return order;
+    }
+
+    @GlobalTransactional
+    @Override
+    public int createOrder(int aid, int pid, int count) {
+        //todo: 报价微服务：获取价格
+        int price=100;
+        int amount=count*price;
+        productService.reduceStock(pid,count);
+        accountService.reduceBalance(aid,amount);
+        return orderDao.createOrder(aid,pid,amount);
+    }
+
+    @Override
+    public List<OrderPo> findAllOrders() {
+        return orderDao.findAllOrders();
     }
 }

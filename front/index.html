@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>test</button>
+
+    <script>
+        let btn=document.querySelector('button')
+        btn.addEventListener("click",()=>{
+            fetch("http://johnyu.cn:9000/order-service/orders/2")
+            .then(resp=>resp.json())
+            .then(info=>console.log(info))
+        })
+    </script>
+</body>
+</html>

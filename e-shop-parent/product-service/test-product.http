@@ -5,7 +5,7 @@ Content-Type: application/x-www-form-urlencoded
 pid=1&stock=1
 
 ### 查询一条商品
-GET http://johnyu.cn:3000/products/1
+GET http://localhost:3000/products/3
 Accept: application/json
 
 ###

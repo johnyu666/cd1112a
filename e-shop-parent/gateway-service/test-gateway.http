@@ -1,4 +1,15 @@
-GET http://localhost:9000/order-service/orders/2
+### 查询一条order
+GET http://johnyu.cn:9000/order-service/orders/2
 Accept: application/json
+
+### 查询所有的order
+GET http://localhost:9000/order-service/orders
+
+### 创建订单
+
+POST http://localhost:9000/order-service/createOrder
+Content-Type: application/x-www-form-urlencoded
+
+aid=2&pid=3&count=1
 
 ###

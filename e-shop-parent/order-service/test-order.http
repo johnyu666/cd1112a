@@ -1,5 +1,17 @@
 ### 查询一条定单
-GET http://localhost:4000/orders/2
+GET http://johnyu.cn:4000/orders/2
+Accept: application/json
+
+### 创建一个订单
+
+POST http://localhost:4000/createOrder
+Content-Type: application/x-www-form-urlencoded
+
+aid=2&pid=3&count=1
+
+### 查询所有的订单
+
+GET http://localhost:4000/orders/
 Accept: application/json
 
 ###

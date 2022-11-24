@@ -15,4 +15,10 @@ class OrderDaoTest {
         OrderPo orderPo=orderDao.loadOrder(1);
         assertTrue(orderPo.getAmount()==1999);
     }
+
+    @Test
+    void createOrder() {
+        int rs = orderDao.createOrder(2, 3, 1);
+        assertTrue(rs>0);
+    }
 }
