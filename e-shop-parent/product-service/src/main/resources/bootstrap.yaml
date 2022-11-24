@@ -2,19 +2,19 @@ spring:
   application:
     name: product-service
   cloud:
-    config:
-      allow-override: true
-      override-none: true
-      override-system-properties: false
     nacos:
-      server-addr: localhost:8848
       discovery:
-
+        server-addr: ${NACOS_ADDR}
+        namespace: dev
       config:
-        shared-configs:
-          - dataId: commons-pro
+        server-addr: ${NACOS_ADDR}
+        namespace: dev
+        extension-configs:
+          - dataId: datasource
             fileExtension: yaml
-    sentinel: #Sentinel注册地址
-      transport:
-        dashboard: localhost:8080
-        port: 8719
+          - dataId: sentinel
+            fileExtension: yaml
+#    sentinel: #Sentinel注册地址
+#      transport:
+#        dashboard: localhost:8080
+#        port: 8719

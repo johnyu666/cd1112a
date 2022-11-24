@@ -2,10 +2,3 @@ database: x_product
 server:
   port: 3000
 
-
-
----
-spring:
-  profiles: p3001
-server:
-  port: 3001

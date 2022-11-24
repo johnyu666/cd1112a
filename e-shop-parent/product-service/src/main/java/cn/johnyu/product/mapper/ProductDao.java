@@ -1,7 +1,6 @@
 package cn.johnyu.product.mapper;
 
 import cn.johnyu.commons.dto.ProductDto;
-import com.baomidou.dynamic.datasource.annotation.DS;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
